@@ -1,4 +1,4 @@
-name: Pythagorean
+name: CI - Run Tests and Upload Coverage
 
 on:
     push:
@@ -9,29 +9,26 @@ on:
             - main
 
 jobs:
-    test:
-        name: Test
+    test-and-coverage:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node_version: [18.x]
-                os: [ubuntu-latest]
 
         steps:
-            - uses: actions/checkout@v4
-            - name: Setup Node.js ${{ matrix.node_version }}
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node_version }}
-                  cache: "npm"
+            - name: Checkout repository
+              uses: actions/checkout@v3
 
-            - name: npm install, build and test
-              run: |
-                  npm install
-                  npm run build --if-present
-                  npm run coverage
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests and generate coverage
+              run: npm run coverage
 
             - name: Upload coverage to Codecov
-              run: bash <(curl -s https://codecov.io/bash)
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+              run: |
+                  bash <(curl -s https://codecov.io/bash) -f coverage.lcov

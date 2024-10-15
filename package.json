@@ -5,12 +5,12 @@
   "type": "commonjs",
   "scripts": {
     "test": "mocha --require @babel/register",
-    "coverage": "nyc npm test"
+    "coverage": "nyc npm test && npx nyc report --reporter=text-lcov > coverage.lcov"
   },
   "nyc": {
     "reporter": [
-      "html",
-      "text"
+      "lcov",
+      "text-summary"
     ],
     "include": [
       "src/**/*.js"
