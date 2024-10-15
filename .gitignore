@@ -17,3 +17,5 @@ Dockerfile
 .dockerignore
 Dockerfile
 docker-compose.yml
+/coverage
+/.nyc_output
