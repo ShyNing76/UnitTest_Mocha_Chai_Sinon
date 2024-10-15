@@ -30,5 +30,8 @@
     "@babel/register": "^7.25.7",
     "mocha": "^10.7.3",
     "nyc": "^17.1.0"
+  },
+  "dependencies": {
+    "sinon": "^19.0.2"
   }
 }
