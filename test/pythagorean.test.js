@@ -1,6 +1,6 @@
 import assert from "assert";
 import PythagoreanModel from "../src/models/pythagorean.model.js";
-import PythagoreanService from "../src/services/pythagorean.service.js";
+import PythagoreanService from "../src/services/pythagorean.service.js"; 
 
 describe("PythagoreanModel", () => {
     describe("calculateHypotenuse()", () => {
@@ -118,7 +118,10 @@ describe("PythagoreanService", () => {
             for (let i = 1; i <= 30; i++) {
                 for (let j = 1; j <= 30; j++) {
                     const result = PythagoreanService.calculateHypotenuse(i, j);
-                    assert.ok(result <= 42.85, `Result ${result} exceeds 42.85 for inputs ${i} and ${j}`);
+                    assert.ok(
+                        result <= 42.85,
+                        `Result ${result} exceeds 42.85 for inputs ${i} and ${j}`
+                    );
                 }
             }
         });

@@ -1,26 +1,23 @@
 {
-  "name": "pythagore-util",
+  "name": "pythagorean-util",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require @babel/register",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm test"
   },
   "nyc": {
     "reporter": [
       "html",
-      "text",
-      "lcov"
+      "text"
     ],
     "include": [
       "src/**/*.js"
     ],
     "exclude": [
       "/test/**/*.js"
-    ],
-    "all": true
+    ]
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
