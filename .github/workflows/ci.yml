@@ -32,6 +32,6 @@ jobs:
                   npm run coverage
 
             - name: Upload coverage to Codecov
-              uses: codecov/codecov-action@v3
+              run: bash <(curl -s https://codecov.io/bash)
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
