@@ -5,6 +5,17 @@ class PythagoreanModel {
             throw new Error("Sides must be numbers");
         return Math.sqrt(a * a + b * b);
     }
+       static calculateHypotenuseAsync(a, b) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    resolve(this.calculateHypotenuse(a, b));
+                } catch (error) {
+                    reject(error);
+                }
+            }, 3000);
+        });
+    }
 }
 
 export default PythagoreanModel;
