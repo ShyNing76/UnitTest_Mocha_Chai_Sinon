@@ -18,6 +18,7 @@
       "/test/**/*.js"
     ]
   },
+  "type": "commonjs",
   "keywords": [],
   "author": "",
   "license": "ISC",
