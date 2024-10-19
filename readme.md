@@ -1,3 +1,5 @@
+[![CI - Run Tests and Upload Coverage](https://github.com/lehoangtrong/UnitTest_Mocha_Chai_Sinon/actions/workflows/ci.yml/badge.svg)](https://github.com/lehoangtrong/UnitTest_Mocha_Chai_Sinon/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/lehoangtrong/UnitTest_Mocha_Chai_Sinon/graph/badge.svg?token=4MEU91WEF3)](https://codecov.io/gh/lehoangtrong/UnitTest_Mocha_Chai_Sinon)
 # Pythagorean Theorem Calculator
 
 This project provides a simple utility for calculating the hypotenuse of a right-angled triangle using the Pythagorean theorem.
