@@ -5,7 +5,8 @@ class PythagoreanModel {
             throw new Error("Sides must be numbers");
         return Math.sqrt(a * a + b * b);
     }
-       static calculateHypotenuseAsync(a, b) {
+
+    static calculateHypotenuseAsync(a, b) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 try {

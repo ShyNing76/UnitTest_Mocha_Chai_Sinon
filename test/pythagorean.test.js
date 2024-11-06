@@ -1,20 +1,50 @@
 import assert from "assert";
 import PythagoreanModel from "../src/models/pythagorean.model.js";
-import PythagoreanService from "../src/services/pythagorean.service.js"; 
+import PythagoreanService from "../src/services/pythagorean.service.js";
+
+// DDT test cases
+const testCases = [
+    { a: 3, b: 4, expected: 5, shouldThrow: false },
+    { a: 5, b: 12, expected: 13, shouldThrow: false },
+    {
+        a: 0,
+        b: 4,
+        expected: "Sides must be positive numbers",
+        shouldThrow: true,
+    },
+    { a: 3, b: "4", expected: "Sides must be numbers", shouldThrow: true },
+    {
+        a: -3,
+        b: 4,
+        expected: "Sides must be positive numbers",
+        shouldThrow: true,
+    },
+];
 
 describe("PythagoreanModel", () => {
     describe("calculateHypotenuse()", () => {
-        it("should calculate the hypotenuse correctly for 100 different inputs", () => {
-            for (let i = 1; i <= 100; i++) {
-                const a = i;
-                const b = i + 1;
-                const expectedHypotenuse = Math.sqrt(a * a + b * b);
-                const result = PythagoreanModel.calculateHypotenuse(a, b);
-                assert.strictEqual(
-                    result,
-                    expectedHypotenuse,
-                    `Failed for a=${a}, b=${b}`
-                );
+        testCases.forEach(({ a, b, expected, shouldThrow }) => {
+            const displayA = typeof a === "string" ? `"${a}"` : a;
+            const displayB = typeof b === "string" ? `"${b}"` : b;
+            if (shouldThrow) {
+                it(`should throw an error for invalid inputs a=${displayA}, b=${displayB}, expected error: "${expected}"`, () => {
+                    assert.throws(
+                        () => PythagoreanModel.calculateHypotenuse(a, b),
+                        (err) => {
+                            assert.strictEqual(err.message, expected);
+                            return true;
+                        }
+                    );
+                });
+            } else {
+                it(`should calculate the hypotenuse correctly for a=${a}, b=${b}`, () => {
+                    const result = PythagoreanModel.calculateHypotenuse(a, b);
+                    assert.strictEqual(
+                        result,
+                        expected,
+                        `Failed for a=${a}, b=${b}`
+                    );
+                });
             }
         });
 

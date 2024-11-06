@@ -25,4 +25,14 @@ describe("PythagoreanService", function () {
             assert.strictEqual(error.message, "Sides must be numbers");
         }
     });
+
+    it("should throw an error if inputs are not numbers", async function () {
+        try {
+            await PythagoreanService.calculateHypotenuseAsync(3, "4");
+        } catch (error) {
+            assert.strictEqual(error.message, "Sides must be numbers");
+        }
+    });
+
+
 });

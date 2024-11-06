@@ -10,7 +10,7 @@
   "nyc": {
     "reporter": [
       "lcov",
-      "text-summary"
+      "text"
     ],
     "include": [
       "src/**/*.js"

@@ -26,5 +26,41 @@ describe("TriangleService", () => {
             // Khôi phục hàm gốc
             calculateHypotenuseStub.restore();
         });
+
+        it("should throw an error if base or height is less than or equal to 0", () => {
+            const base = 0;
+            const height = 4;
+
+            assert.throws(
+                () => TriangleService.calculateHypotenuse(base, height),
+                {
+                    name: "Error",
+                    message: "Base and height must be positive numbers",
+                }
+            );
+        });
+
+        it("should throw an error if base or height is not a number", () => {
+            const base = "3";
+            const height = 4;
+
+            assert.throws(
+                () => TriangleService.calculateHypotenuse(base, height),
+                {
+                    name: "Error",
+                    message: "Base and height must be numbers",
+                }
+            );
+        });
+
+        it("should calculate the hypotenuse correctly", () => {
+            const base = 3;
+            const height = 4;
+            const expectedHypotenuse = Math.sqrt(base * base + height * height);
+
+            const result = TriangleService.calculateHypotenuse(base, height);
+
+            assert.strictEqual(result, expectedHypotenuse);
+        });
     });
 });
